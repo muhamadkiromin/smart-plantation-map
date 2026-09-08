@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPDS Smart Plantation Map</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <i class="fas fa-seedling"></i>
+            <span>IPDS SMART PLANTATION</span>
+        </div>
+        <div class="system-status">
+            <span class="dot"></span> Online
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Dashboard Cards -->
+        <div class="dashboard">
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-vector-square"></i></div>
+                <div class="card-info">
+                    <h3>Total Area</h3>
+                    <p id="total-area">150 Ha</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-th-large"></i></div>
+                <div class="card-info">
+                    <h3>Total Blocks</h3>
+                    <p id="total-blocks">3</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-users"></i></div>
+                <div class="card-info">
+                    <h3>Workers</h3>
+                    <p id="total-workers">42</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                <div class="card-info">
+                    <h3>Monthly Yield</h3>
+                    <p id="monthly-prod">1,240 Tons</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-layout">
+            <!-- Map Container -->
+            <div id="map"></div>
+
+            <!-- Details Panel -->
+            <aside class="details-panel" id="details-panel">
+                <div class="panel-header">
+                    <h2>Block Details</h2>
+                    <p>Select a block on the map</p>
+                </div>
+                <div id="block-info" class="block-info-content">
+                    <div class="placeholder-text">
+                        <i class="fas fa-mouse-pointer"></i>
+                        <p>Click a plantation block to view specific data</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
