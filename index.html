@@ -1,87 +1,199 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IPDS Smart Plantation Map</title>
-    
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+<title>IPDS Smart Plantation Map</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body{
+font-family:Arial, sans-serif;
+margin:0;
+background:#eef5e8;
+}
+
+.header{
+background:#14532d;
+color:white;
+padding:20px;
+font-size:25px;
+font-weight:bold;
+}
+
+.container{
+padding:20px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 3px 10px #aaa;
+}
+
+.number{
+font-size:30px;
+font-weight:bold;
+color:#166534;
+}
+
+.map{
+margin-top:25px;
+background:#4ade80;
+height:400px;
+border-radius:20px;
+padding:20px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+
+.block{
+background:#22c55e;
+border-radius:15px;
+padding:20px;
+color:white;
+text-align:center;
+cursor:pointer;
+font-weight:bold;
+}
+
+.block:hover{
+background:#15803d;
+}
+
+.info{
+margin-top:20px;
+background:white;
+padding:20px;
+border-radius:15px;
+}
+
+</style>
+
 </head>
+
+
 <body>
 
-    <header>
-        <div class="logo">
-            <i class="fas fa-seedling"></i>
-            <span>IPDS SMART PLANTATION</span>
-        </div>
-        <div class="system-status">
-            <span class="dot"></span> Online
-        </div>
-    </header>
+<div class="header">
+🌴 IPDS SMART PLANTATION MAP
+</div>
 
-    <main class="container">
-        <!-- Dashboard Cards -->
-        <div class="dashboard">
-            <div class="card">
-                <div class="card-icon"><i class="fas fa-vector-square"></i></div>
-                <div class="card-info">
-                    <h3>Total Area</h3>
-                    <p id="total-area">150 Ha</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-icon"><i class="fas fa-th-large"></i></div>
-                <div class="card-info">
-                    <h3>Total Blocks</h3>
-                    <p id="total-blocks">3</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-icon"><i class="fas fa-users"></i></div>
-                <div class="card-info">
-                    <h3>Workers</h3>
-                    <p id="total-workers">42</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
-                <div class="card-info">
-                    <h3>Monthly Yield</h3>
-                    <p id="monthly-prod">1,240 Tons</p>
-                </div>
-            </div>
-        </div>
 
-        <div class="map-layout">
-            <!-- Map Container -->
-            <div id="map"></div>
+<div class="container">
 
-            <!-- Details Panel -->
-            <aside class="details-panel" id="details-panel">
-                <div class="panel-header">
-                    <h2>Block Details</h2>
-                    <p>Select a block on the map</p>
-                </div>
-                <div id="block-info" class="block-info-content">
-                    <div class="placeholder-text">
-                        <i class="fas fa-mouse-pointer"></i>
-                        <p>Click a plantation block to view specific data</p>
-                    </div>
-                </div>
-            </aside>
-        </div>
-    </main>
 
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <!-- Custom JS -->
-    <script src="script.js"></script>
+<div class="cards">
+
+<div class="card">
+Total Area
+<div class="number">1,250 Ha</div>
+</div>
+
+
+<div class="card">
+Total Blocks
+<div class="number">45</div>
+</div>
+
+
+<div class="card">
+Workers
+<div class="number">120</div>
+</div>
+
+
+<div class="card">
+Monthly Yield
+<div class="number">1,240 Ton</div>
+</div>
+
+
+</div>
+
+
+
+<h2>🗺 Plantation Monitoring Map</h2>
+
+
+<div class="map">
+
+
+<div class="block" onclick="show('BLOCK A01')">
+🟢<br>
+BLOCK A01
+</div>
+
+
+<div class="block" onclick="show('BLOCK A02')">
+🟡<br>
+BLOCK A02
+</div>
+
+
+<div class="block" onclick="show('BLOCK A03')">
+🔴<br>
+BLOCK A03
+</div>
+
+
+<div class="block" onclick="show('BLOCK B01')">
+🟢<br>
+BLOCK B01
+</div>
+
+
+<div class="block" onclick="show('BLOCK B02')">
+🟢<br>
+BLOCK B02
+</div>
+
+
+<div class="block" onclick="show('BLOCK B03')">
+🟡<br>
+BLOCK B03
+</div>
+
+
+</div>
+
+
+<div class="info" id="detail">
+
+Klik blok ladang untuk lihat maklumat
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+function show(block){
+
+document.getElementById("detail").innerHTML=
+
+"<h2>"+block+"</h2>"+
+"🌴 Pokok: 6,500 unit<br>"+
+"📏 Keluasan: 35 Ha<br>"+
+"🌱 Umur Pokok: 8 Tahun<br>"+
+"📅 Pemeriksaan: 08/09/2026<br>"+
+"Status: 🟢 Normal";
+
+}
+
+</script>
+
+
 </body>
 </html>
