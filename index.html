@@ -44,31 +44,47 @@ font-weight:bold;
 color:#166534;
 }
 
-.map{
-    margin-top:25px;
-    background:white;
-    border-radius:20px;
-    padding:20px;
-    overflow:hidden;
-} 
-  
+.map-wrapper{
+    position:relative;
+    width:100%;
+}
+
 .farm-map{
     width:100%;
-    max-height:700px;
-    object-fit:contain;
+    height:auto;
     display:block;
-    margin:auto;
     border-radius:15px;
 }
 
-.map{
-    height:700px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow:hidden;
+.lot-pin{
+    position:absolute;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:3px solid white;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    transform:translate(-50%,-50%);
+    box-shadow:0 3px 10px rgba(0,0,0,0.4);
 }
 
+.lot-pin:hover{
+    transform:translate(-50%,-50%) scale(1.15);
+}
+
+.healthy{
+    background:#16a34a;
+}
+
+.monitoring{
+    background:#eab308;
+}
+
+.alert{
+    background:#dc2626;
+}
+    
 .block{
 background:#22c55e;
 border-radius:15px;
@@ -140,16 +156,66 @@ Monthly Yield
 
 <div class="map">
 
-<img src="felda-tunggal-map-crop.png" 
-class="farm-map"
-alt="Peta Ladang FELDA Tunggal">
+    <div class="map-wrapper">
+
+        <img src="felda-tunggal-map-crop.png"
+        class="farm-map"
+        alt="Peta Ladang FELDA Tunggal">
+
+        <!-- LOT DEMO 1 -->
+        <button class="lot-pin healthy"
+        style="top:40%; left:53%;"
+        onclick="showLot(
+        'LOT 001',
+        'ZAINY',
+        'Healthy',
+        '3.20 Ha',
+        '485 Pokok',
+        '9 Tahun',
+        '5.8 Tan/Bulan',
+        '92%'
+        )">1</button>
+
+
+        <!-- LOT DEMO 2 -->
+        <button class="lot-pin monitoring"
+        style="top:54%; left:44%;"
+        onclick="showLot(
+        'LOT 002',
+        'REDZUAN',
+        'Monitoring',
+        '3.05 Ha',
+        '462 Pokok',
+        '11 Tahun',
+        '4.9 Tan/Bulan',
+        '76%'
+        )">2</button>
+
+
+        <!-- LOT DEMO 3 -->
+        <button class="lot-pin alert"
+        style="top:63%; left:59%;"
+        onclick="showLot(
+        'LOT 003',
+        'MOHD RABIRAN',
+        'Alert',
+        '2.85 Ha',
+        '430 Pokok',
+        '12 Tahun',
+        '3.7 Tan/Bulan',
+        '58%'
+        )">3</button>
+
+    </div>
 
 </div>
 
 
 <div class="info" id="detail">
 
-Klik blok ladang untuk lihat maklumat
+<h2>🌴 Maklumat Lot</h2>
+
+Klik pin pada peta untuk melihat maklumat pekebun.
 
 </div>
 
@@ -160,7 +226,77 @@ Klik blok ladang untuk lihat maklumat
 
 <script>
 
-function show(block){
+<script>
+
+function showLot(
+lot,
+owner,
+status,
+area,
+trees,
+age,
+yieldData,
+healthScore
+){
+
+let statusIcon = "🟢";
+
+if(status === "Monitoring"){
+    statusIcon = "🟡";
+}
+
+if(status === "Alert"){
+    statusIcon = "🔴";
+}
+
+document.getElementById("detail").innerHTML = `
+
+<h2>🌴 ${lot}</h2>
+
+<strong>👨‍🌾 Pekebun:</strong>
+${owner}
+
+<br><br>
+
+<strong>Status Kesihatan:</strong>
+${statusIcon} ${status}
+
+<br><br>
+
+<strong>📏 Keluasan:</strong>
+${area}
+
+<br>
+
+<strong>🌴 Jumlah Pokok:</strong>
+${trees}
+
+<br>
+
+<strong>📅 Umur Pokok:</strong>
+${age}
+
+<br>
+
+<strong>📦 Anggaran Hasil BTS:</strong>
+${yieldData}
+
+<br>
+
+<strong>🤖 AI Health Score:</strong>
+${healthScore}
+
+<br><br>
+
+<small>
+⚠️ Data keluasan, pokok, umur, hasil dan AI Health Score adalah data simulasi untuk tujuan demo.
+</small>
+
+`;
+
+}
+
+</script>
 
 document.getElementById("detail").innerHTML=
 
