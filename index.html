@@ -156,11 +156,27 @@ Monthly Yield
 
 <div class="map">
 
-    <div class="map-wrapper">
+<img src="felda-tunggal-map-crop.png"
+style="width:100%; border-radius:15px;"
+alt="Peta Ladang FELDA Tunggal">
 
-        <img src="felda-tunggal-map-crop.png"
-        class="farm-map"
-        alt="Peta Ladang FELDA Tunggal">
+
+<!-- PIN LADANG -->
+
+<div class="pin green" onclick="show('1')">
+1
+</div>
+
+<div class="pin yellow" onclick="show('2')">
+2
+</div>
+
+<div class="pin red" onclick="show('3')">
+3
+</div>
+
+
+</div>
 
         <!-- LOT DEMO 1 -->
         <button class="lot-pin healthy"
@@ -298,9 +314,7 @@ function show(block){
 
 let data = {
 
-<div class="pin green" onclick="show('1')">
-1
-</div>
+"1":{
 pokok:"6,500 unit",
 keluasan:"35 Ha",
 umur:"8 Tahun",
@@ -308,33 +322,28 @@ pemeriksaan:"08/09/2026",
 status:"🟢 Normal"
 },
 
-<div class="pin yellow" onclick="show('2')">
-2
-</div>
+"2":{
 pokok:"7,200 unit",
 keluasan:"40 Ha",
 umur:"10 Tahun",
 pemeriksaan:"08/09/2026",
-status:"🟡 Perhatian"
+status:"🟡 Monitoring"
 },
 
-<div class="pin red" onclick="show('3')">
-3
-</div>
+"3":{
 pokok:"5,900 unit",
 keluasan:"32 Ha",
 umur:"7 Tahun",
 pemeriksaan:"08/09/2026",
-status:"🔴 Pemeriksaan"
+status:"🔴 Alert"
 }
 
 };
 
 
-document.getElementById("detail").innerHTML =
+document.getElementById("detail").innerHTML = `
 
-`
-<h2>🌴 Maklumat Block ${block}</h2>
+<h2>🌴 Maklumat Lot ${block}</h2>
 
 🌴 Pokok: ${data[block].pokok}<br>
 
@@ -351,7 +360,6 @@ Status: ${data[block].status}
 }
 
 </script>
-
 
 </body>
 </html>
