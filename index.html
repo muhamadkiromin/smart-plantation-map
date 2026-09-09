@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>IPDS Smart Plantation Map</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,353 +14,470 @@ margin:0;
 background:#eef5e8;
 }
 
+
+/* HEADER */
+
 .header{
-background:#14532d;
+
+background:#075e2b;
 color:white;
 padding:20px;
-font-size:25px;
+font-size:26px;
 font-weight:bold;
+
 }
 
-.container{
-padding:20px;
-}
+
+/* DASHBOARD */
 
 .cards{
+
 display:grid;
 grid-template-columns:repeat(4,1fr);
 gap:15px;
+padding:20px;
+
 }
+
 
 .card{
+
 background:white;
 padding:20px;
 border-radius:15px;
-box-shadow:0 3px 10px #aaa;
+box-shadow:0 3px 10px #ccc;
+
 }
+
+
+.title{
+color:#555;
+}
+
 
 .number{
+
 font-size:30px;
 font-weight:bold;
-color:#166534;
+color:#087f35;
+
 }
+
+
+
+/* MAP */
+
+.container{
+
+padding:20px;
+
+}
+
 
 .map{
-    height:600px;
-    overflow:hidden;
-    border-radius:20px;
-}
 
-.farm-map{
-    width:100%;
-    height:600px;
-    object-fit:contain;
-}
-
-.lot-pin{
-    position:absolute;
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    border:3px solid white;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
-    transform:translate(-50%,-50%);
-    box-shadow:0 3px 10px rgba(0,0,0,0.4);
-}
-
-.lot-pin:hover{
-    transform:translate(-50%,-50%) scale(1.15);
-}
-
-.healthy{
-    background:#16a34a;
-}
-
-.monitoring{
-    background:#eab308;
-}
-
-.alert{
-    background:#dc2626;
-}
-    
-.block{
-background:#22c55e;
-border-radius:15px;
-padding:20px;
-color:white;
-text-align:center;
-cursor:pointer;
-font-weight:bold;
-}
-
-.block:hover{
-background:#15803d;
-}
-
-.info{
-margin-top:20px;
+position:relative;
 background:white;
 padding:20px;
-border-radius:15px;
+border-radius:20px;
+
 }
 
+
+.map img{
+
+width:100%;
+border-radius:15px;
+
+}
+
+
+
+/* PIN */
+
+
+.pin{
+
+position:absolute;
+
+width:45px;
+height:45px;
+
+border-radius:50%;
+
+color:white;
+
+font-weight:bold;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+cursor:pointer;
+
+border:3px solid white;
+
+box-shadow:0 3px 8px #555;
+
+}
+
+
+.green{
+
+background:#16a34a;
+
+top:20%;
+
+left:40%;
+
+}
+
+
+
+.yellow{
+
+background:#eab308;
+
+top:45%;
+
+left:55%;
+
+}
+
+
+
+.red{
+
+background:#dc2626;
+
+top:35%;
+
+left:70%;
+
+}
+
+
+
+/* DETAIL */
+
+.detail{
+
+margin:20px;
+
+background:white;
+
+padding:20px;
+
+border-radius:15px;
+
+box-shadow:0 3px 10px #ccc;
+
+font-size:18px;
+
+}
+
+
 </style>
+
 
 </head>
 
 
 <body>
 
+
 <div class="header">
+
 🌴 IPDS SMART PLANTATION MAP
+
 </div>
+
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<div class="title">
+Total Area
+</div>
+
+<div class="number">
+1,250 Ha
+</div>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="title">
+Total Blocks
+</div>
+
+<div class="number">
+45
+</div>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="title">
+Workers
+</div>
+
+<div class="number">
+120
+</div>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="title">
+Monthly Yield
+</div>
+
+<div class="number">
+1,240 Ton
+</div>
+
+</div>
+
+
+
+</div>
+
+
+
 
 
 <div class="container">
 
 
-<div class="cards">
+<h2>
+🗺️ Plantation Monitoring Map
+</h2>
 
-<div class="card">
-Total Area
-<div class="number">1,250 Ha</div>
-</div>
-
-
-<div class="card">
-Total Blocks
-<div class="number">45</div>
-</div>
-
-
-<div class="card">
-Workers
-<div class="number">120</div>
-</div>
-
-
-<div class="card">
-Monthly Yield
-<div class="number">1,240 Ton</div>
-</div>
-
-
-</div>
-
-
-
-<h2>🗺 Plantation Monitoring Map</h2>
 
 
 <div class="map">
 
-<img src="felda-tunggal-map-crop.png"
-style="width:100%; border-radius:15px;"
-alt="Peta Ladang FELDA Tunggal">
+
+<img src="felda-tunggal-map-crop.png">
 
 
-<!-- PIN LADANG -->
 
-<div class="pin green" onclick="show('1')">
+<!-- PIN -->
+
+<div class="pin green"
+onclick="show('1')">
+
 1
+
 </div>
 
-<div class="pin yellow" onclick="show('2')">
+
+
+<div class="pin yellow"
+onclick="show('2')">
+
 2
+
 </div>
 
-<div class="pin red" onclick="show('3')">
+
+
+<div class="pin red"
+onclick="show('3')">
+
 3
+
+</div>
+
+
+
 </div>
 
 
 </div>
 
-        <!-- LOT DEMO 1 -->
-        <button class="lot-pin healthy"
-        style="top:40%; left:53%;"
-        onclick="showLot(
-        'LOT 001',
-        'ZAINY',
-        'Healthy',
-        '3.20 Ha',
-        '485 Pokok',
-        '9 Tahun',
-        '5.8 Tan/Bulan',
-        '92%'
-        )">1</button>
 
 
-        <!-- LOT DEMO 2 -->
-        <button class="lot-pin monitoring"
-        style="top:54%; left:44%;"
-        onclick="showLot(
-        'LOT 002',
-        'REDZUAN',
-        'Monitoring',
-        '3.05 Ha',
-        '462 Pokok',
-        '11 Tahun',
-        '4.9 Tan/Bulan',
-        '76%'
-        )">2</button>
 
 
-        <!-- LOT DEMO 3 -->
-        <button class="lot-pin alert"
-        style="top:63%; left:59%;"
-        onclick="showLot(
-        'LOT 003',
-        'MOHD RABIRAN',
-        'Alert',
-        '2.85 Ha',
-        '430 Pokok',
-        '12 Tahun',
-        '3.7 Tan/Bulan',
-        '58%'
-        )">3</button>
-
-    </div>
-
-</div>
+<div class="detail" id="detail">
 
 
-<div class="info" id="detail">
-
-<h2>🌴 Maklumat Lot</h2>
-
-Klik pin pada peta untuk melihat maklumat pekebun.
-
-</div>
+🌴 Klik pin pada peta untuk melihat maklumat lot
 
 
 </div>
+
+
+
+
+
 
 <script>
 
-function showLot(
-lot,
-owner,
-status,
-area,
-trees,
-age,
-yieldData,
-healthScore
-){
-
-let statusIcon = "🟢";
-
-if(status === "Monitoring"){
-    statusIcon = "🟡";
-}
-
-if(status === "Alert"){
-    statusIcon = "🔴";
-}
-
-document.getElementById("detail").innerHTML = `
-
-<h2>🌴 ${lot}</h2>
-
-<strong>👨‍🌾 Pekebun:</strong>
-${owner}
-
-<br><br>
-
-<strong>Status Kesihatan:</strong>
-${statusIcon} ${status}
-
-<br><br>
-
-<strong>📏 Keluasan:</strong>
-${area}
-
-<br>
-
-<strong>🌴 Jumlah Pokok:</strong>
-${trees}
-
-<br>
-
-<strong>📅 Umur Pokok:</strong>
-${age}
-
-<br>
-
-<strong>📦 Anggaran Hasil BTS:</strong>
-${yieldData}
-
-<br>
-
-<strong>🤖 AI Health Score:</strong>
-${healthScore}
-
-<br><br>
-
-<small>
-⚠️ Data keluasan, pokok, umur, hasil dan AI Health Score adalah data simulasi untuk tujuan demo.
-</small>
-
-`;
-
-}
-
-<script>
 
 function show(block){
 
-let data = {
+
+
+let data={
+
+
 
 "1":{
-pokok:"6,500 unit",
-keluasan:"35 Ha",
-umur:"8 Tahun",
-pemeriksaan:"08/09/2026",
+
+
+owner:"Ahmad Bin Ali",
+
+area:"35 Ha",
+
+trees:"6,500 unit",
+
+age:"8 Tahun",
+
+yield:"120 Tan/Bulan",
+
+score:"92%",
+
 status:"🟢 Normal"
+
+
 },
+
+
+
 
 "2":{
-pokok:"7,200 unit",
-keluasan:"40 Ha",
-umur:"10 Tahun",
-pemeriksaan:"08/09/2026",
+
+
+owner:"Siti Mariam",
+
+area:"40 Ha",
+
+trees:"7,200 unit",
+
+age:"10 Tahun",
+
+yield:"135 Tan/Bulan",
+
+score:"78%",
+
 status:"🟡 Monitoring"
+
+
 },
 
+
+
+
+
 "3":{
-pokok:"5,900 unit",
-keluasan:"32 Ha",
-umur:"7 Tahun",
-pemeriksaan:"08/09/2026",
+
+
+owner:"Rahman Bin Hassan",
+
+area:"32 Ha",
+
+trees:"5,900 unit",
+
+age:"7 Tahun",
+
+yield:"98 Tan/Bulan",
+
+score:"55%",
+
 status:"🔴 Alert"
+
+
 }
+
+
 
 };
 
 
-document.getElementById("detail").innerHTML = `
 
-<h2>🌴 Maklumat Lot ${block}</h2>
 
-🌴 Pokok: ${data[block].pokok}<br>
+document.getElementById("detail").innerHTML=`
 
-📏 Keluasan: ${data[block].keluasan}<br>
+<h2>
+🌴 Maklumat Lot ${block}
+</h2>
 
-🌱 Umur Pokok: ${data[block].umur}<br>
 
-📅 Pemeriksaan: ${data[block].pemeriksaan}<br>
+👨‍🌾 <b>Pekebun:</b> 
+${data[block].owner}
 
-Status: ${data[block].status}
+<br><br>
+
+
+📏 <b>Keluasan:</b>
+${data[block].area}
+
+
+<br>
+
+
+🌴 <b>Jumlah Pokok:</b>
+${data[block].trees}
+
+
+<br>
+
+
+🌱 <b>Umur Pokok:</b>
+${data[block].age}
+
+
+<br>
+
+
+📦 <b>Anggaran BTS:</b>
+${data[block].yield}
+
+
+<br>
+
+
+🤖 <b>AI Health Score:</b>
+${data[block].score}
+
+
+<br>
+
+
+Status:
+${data[block].status}
+
+
 
 `;
 
+
+
 }
+
+
 
 </script>
 
+
+
 </body>
+
 </html>
