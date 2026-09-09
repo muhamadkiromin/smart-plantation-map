@@ -292,16 +292,55 @@ ${healthScore}
 
 }
 
-</script>
+<script>
 
-document.getElementById("detail").innerHTML=
+function show(block){
 
-"<h2>"+block+"</h2>"+
-"🌴 Pokok: 6,500 unit<br>"+
-"📏 Keluasan: 35 Ha<br>"+
-"🌱 Umur Pokok: 8 Tahun<br>"+
-"📅 Pemeriksaan: 08/09/2026<br>"+
-"Status: 🟢 Normal";
+let data = {
+
+"1": {
+pokok:"6,500 unit",
+keluasan:"35 Ha",
+umur:"8 Tahun",
+pemeriksaan:"08/09/2026",
+status:"🟢 Normal"
+},
+
+"2": {
+pokok:"7,200 unit",
+keluasan:"40 Ha",
+umur:"10 Tahun",
+pemeriksaan:"08/09/2026",
+status:"🟡 Perhatian"
+},
+
+"3": {
+pokok:"5,900 unit",
+keluasan:"32 Ha",
+umur:"7 Tahun",
+pemeriksaan:"08/09/2026",
+status:"🔴 Pemeriksaan"
+}
+
+};
+
+
+document.getElementById("detail").innerHTML =
+
+`
+<h2>🌴 Maklumat Block ${block}</h2>
+
+🌴 Pokok: ${data[block].pokok}<br>
+
+📏 Keluasan: ${data[block].keluasan}<br>
+
+🌱 Umur Pokok: ${data[block].umur}<br>
+
+📅 Pemeriksaan: ${data[block].pemeriksaan}<br>
+
+Status: ${data[block].status}
+
+`;
 
 }
 
